@@ -28,10 +28,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="container">
         <h2>회원가입</h2>
-        <form action="/" method="post">
+        <form action="" method="post">
             <div class="form-group">
                 <label for="name">아이디</label>
-                <input type="text" id="name" name="name" required placeholder="아이디를 입력하세요.">
+                <input type="text" id="username" name="username" required placeholder="아이디를 입력하세요.">
             </div>
             <div class="form-group">
                 <label for="email">비밀번호</label>
@@ -42,13 +42,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="email" id="email" name="email" required placeholder="이메일을 입력하세요.">
             </div>
             <div class="form-group">
-                <label for="phone">전화번호</label>
-                <input type="tel" id="phone" name="phone" required placeholder="전화번호를 입력하세요.">
+                <label for="phone_number">전화번호</label>
+                <input type="tel" id="phone_number" name="phone_number" required placeholder="전화번호를 입력하세요.">
             </div>
             <div class="form-group">
                 <label>성별</label><br>
-                <input type="radio" id="male" name="gender" value="man" required>남자</input>
-                <input type="radio" id="male" name="gender" value="woman" required>여자</input>
+                <input type="radio" id="gender" name="gender" value="man" required>남자</input>
+                <input type="radio" id="gender" name="gender" value="woman" required>여자</input>
             </div>
             <button type="submit">회원가입</button>
         </form>

@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h2>로그인</h2>
-        <form action="./login_process.php" method="post">
+        <form action="" method="post">
             <div class="form-group">
                 <label for="username">아이디</label>
                 <input type="text" id="username" name="username" required placeholder="이름을 입력하세요.">
