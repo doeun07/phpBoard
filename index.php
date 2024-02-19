@@ -12,7 +12,7 @@ echo "<script>console.log('path[1] = " . $path[1] . "');</script>";
 $page = "";
 switch ($resource[1]) {
     case '':
-        echo "Root Directory Access";
+        $page = "./pages/main.php";
         break;
     case 'login':
         $page = "./pages/" . $resource[1] . ".php";
@@ -21,7 +21,7 @@ switch ($resource[1]) {
         $page = "./pages/" . $resource[1] . ".php";
         break;
     default:
-        echo "이도저도 아무것도 아닌 그러하지 못한 그런 곳";
+        $page = "./pages/404.php";
         break;
 }
 include($page);
