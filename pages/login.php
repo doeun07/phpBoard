@@ -1,4 +1,5 @@
 <?php
+    // require_once('./config/dbconnect.php');
 	$host = "localhost";
 	$user = "root";
 	$pass = "";
@@ -7,21 +8,23 @@
 	$conn = new mysqli($host, $user, $pass, $db);
 
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
-		$username = $_POST["username"];
+        $username = $_POST["username"];
 		$password = $_POST["password"];
 
-		$sql = "SELECT username FROM users WHERE username = '$username' and password = '$password'";
+		$sql = "SELECT user_idx FROM users WHERE username = '$username' and password = '$password'";
 		$result = $conn->query($sql);
-
 		if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $userIdx = $row["user_idx"];
 			session_start();
-			$_SESSION["username"] = $username;
+            $_SESSION["user_idx"] = $userIdx;
+            echo $_SESSION["user_idx"];
 			header("location: /");
 		} else {
 			$error = "아이디 또는 비밀번호가 잘못되었습니다.";
 		}
 	}
-
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
