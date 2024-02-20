@@ -1,3 +1,28 @@
+<?php
+	$host = "localhost";
+	$user = "root";
+	$pass = "";
+	$db = "inseong";
+
+	$conn = new mysqli($host, $user, $pass, $db);
+
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+		$username = $_POST["username"];
+		$password = $_POST["password"];
+
+		$sql = "SELECT username FROM users WHERE username = '$username' and password = '$password'";
+		$result = $conn->query($sql);
+
+		if ($result->num_rows > 0) {
+			session_start();
+			$_SESSION["username"] = $username;
+			header("location: /");
+		} else {
+			$error = "아이디 또는 비밀번호가 잘못되었습니다.";
+		}
+	}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
