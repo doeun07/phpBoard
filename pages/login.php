@@ -1,30 +1,24 @@
 <?php
-    // require_once('./config/dbconnect.php');
-	$host = "localhost";
-	$user = "root";
-	$pass = "";
-	$db = "inseong";
-
-	$conn = new mysqli($host, $user, $pass, $db);
-
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        session_start();
         $username = $_POST["username"];
 		$password = $_POST["password"];
 
-		$sql = "SELECT user_idx FROM users WHERE username = '$username' and password = '$password'";
-		$result = $conn->query($sql);
-		if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            $userIdx = $row["user_idx"];
-			session_start();
-            $_SESSION["user_idx"] = $userIdx;
-            echo $_SESSION["user_idx"];
-			header("location: /");
-		} else {
-			$error = "아이디 또는 비밀번호가 잘못되었습니다.";
-		}
+		$sql = "SELECT user_idx, password FROM users WHERE username = :username";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(":username", $username);
+
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user && ($password == $user['password'])) {
+            $_SESSION["user_idx"] = $user["user_idx"];
+            header("Location: /");
+            exit;
+        } else {
+            echo "아이디 또는 비밀번호가 잘못되었습니다.";
+        }
 	}
-    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +26,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인</title>
-    <link rel="stylesheet" href="./pages/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
     <div class="container">
