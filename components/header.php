@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="../css/header.css">
 <header>
     <div id="left">
-        <span><a href="./main">인성터진 게시판</a></span>
+        <span><a href="/">인성터진 게시판</a></span>
     </div>
     <div id="right">
         <ul>

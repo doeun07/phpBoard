@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="./css/global.css">
+<link rel="stylesheet" href="./css/style.css">
 <?php
 include('./config/dbconnect.php');
 session_start();
