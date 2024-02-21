@@ -11,12 +11,18 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php
     if ($posts) {
         foreach ($posts as $post) {
+            $sql = "SELECT * FROM users WHERE user_idx = :user_idx";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(":user_idx", $post["user_idx"]);
+            $stmt->execute();
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
             $divinnertext = "";
             $divinnertext .= "<div class='post'>";
-            $divinnertext .= "<h2>" . $post["title"]. "</h2>";
-            $divinnertext .= "<p>작성자 ID : " . $post["user_idx"]. "</p>";
-            $divinnertext .= "<p>게시글 ID : " . $post["post_idx"]. "</p>";
-            $divinnertext .= "<p>" . $post["content"]. "</p>";
+            $divinnertext .= "<h2>" . $post["title"] . "</h2>";
+            $divinnertext .= "<p>작성자 ID : " . $user["username"] . "</p>";
+            $divinnertext .= "<p>게시글 ID : " . $post["post_idx"] . "</p>";
+            $divinnertext .= "<p>" . $post["content"] . "</p>";
             $divinnertext .= "</div>";
             echo $divinnertext;
         }
