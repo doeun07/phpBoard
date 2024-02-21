@@ -1,5 +1,6 @@
 <?php
 include('./config/dbconnect.php');
+session_start();
 
 $request = $_SERVER['REQUEST_URI']; //URI과 URL, URN의 차이는?
 $path = explode("?", $request);
@@ -18,6 +19,9 @@ switch ($resource[1]) {
         $page = "./pages/" . $resource[1] . ".php";
         break;
     case 'register':
+        $page = "./pages/" . $resource[1] . ".php";
+        break;
+    case 'logout':
         $page = "./pages/" . $resource[1] . ".php";
         break;
     default:
