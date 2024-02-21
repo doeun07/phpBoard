@@ -7,7 +7,10 @@
         <ul>
             <?php
             if(isset($_SESSION["user_idx"])) {
-                echo "<li><a href='./logout'>로그아웃</a></li>";
+                echo "
+                <li><a href='./logout'>로그아웃</a></li>
+                <li><a href='./posting'>게시글 작성</a></li>
+                ";
             } else {
                 echo "
                 <li><a href='./login'>로그인</a></li>
