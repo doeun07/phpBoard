@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="./css/global.css">
 <?php
 include('./config/dbconnect.php');
 session_start();
@@ -11,6 +12,7 @@ echo "<script>console.log('path[1] = " . $path[1] . "');</script>";
 
 
 $page = "";
+include('./components/header.php');
 switch ($resource[1]) {
     case '':
         $page = "./pages/main.php";
