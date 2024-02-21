@@ -9,6 +9,22 @@ if(!isset($_SESSION["user_idx"])) {
     ";
 } 
 
+//글 작성 로직
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $user_idx = $_SESSION["user_idx"];
+    $title = $_POST["title"];
+    $content = $_POST["content"];
+    
+    try {
+        $sql = "INSERT INTO posts (user_idx, title, content) VALUES (?, ?, ?)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$user_idx, $title, $content]);
+        echo "게시글 작성이 되었습니다.";
+    } catch (PDOException $e) {
+        echo $e->getMessage();
+    }
+}
+
 ?>
 
 
