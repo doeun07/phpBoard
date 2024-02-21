@@ -39,6 +39,9 @@ switch ($resource[1]) {
     case 'posting':
         $page = "./pages/" . $resource[1] . ".php";
         break;
+    case 'posts':
+        $page = "./pages/" . $resource[1] . ".php";
+        break;
     default:
         $page = "./pages/404.php";
         break;
