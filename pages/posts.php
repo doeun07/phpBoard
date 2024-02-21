@@ -22,6 +22,7 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $divinnertext .= "<h2>" . $post["title"] . "</h2>";
             $divinnertext .= "<p>작성자 ID : " . $user["username"] . "</p>";
             $divinnertext .= "<p>게시글 ID : " . $post["post_idx"] . "</p>";
+            $divinnertext .= "<p>작성일 : " . $post["write_date"] . "</p>";
             $divinnertext .= "<p>" . $post["content"] . "</p>";
             $divinnertext .= "</div>";
             echo $divinnertext;
