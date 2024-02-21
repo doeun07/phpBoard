@@ -6,8 +6,8 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
-<div>
-    <h1>게시글 목록</h1>
+<div class="container posts_container">
+    <h2>게시글 목록</h2>
     <?php
     if ($posts) {
         foreach ($posts as $post) {
@@ -18,12 +18,12 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
             $divinnertext = "";
-            $divinnertext .= "<div class='post'>";
-            $divinnertext .= "<h2>" . $post["title"] . "</h2>";
-            $divinnertext .= "<p>작성자 ID : " . $user["username"] . "</p>";
-            $divinnertext .= "<p>게시글 ID : " . $post["post_idx"] . "</p>";
-            $divinnertext .= "<p>작성일 : " . $post["write_date"] . "</p>";
-            $divinnertext .= "<p>" . $post["content"] . "</p>";
+            $divinnertext .= "<div class='post container'>";
+            $divinnertext .= "<h3>" . $post["title"] . "</h3>";
+            $divinnertext .= "<p class='textsm'>작성자 ID : " . $user["username"] . "</p>";
+            $divinnertext .= "<p class='textsm'>게시글 ID : " . $post["post_idx"] . "</p>";
+            $divinnertext .= "<p class='textsm'>작성일 : " . $post["write_date"] . "</p>";
+            $divinnertext .= "<p class='textmd'>" . $post["content"] . "</p>";
             $divinnertext .= "</div>";
             echo $divinnertext;
         }
