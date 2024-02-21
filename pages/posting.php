@@ -1,6 +1,6 @@
 <div class="container posting_container">
     <h2>게시글 작성</h2>
-    <form action="./post_process.php" method="post">
+    <form action="posting" method="post">
         <div class="form-group">
             <label for="title">제목</label>
             <input type="text" id="title" name="title" required placeholder="제목을 입력하세요.">
