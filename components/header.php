@@ -10,6 +10,8 @@
                 echo "
                 <li><a href='./logout'>로그아웃</a></li>
                 <li><a href='./posting'>게시글 작성</a></li>
+                <li><a href='./posts'>게시글 보기</a></li>
+                <li><a href='./admin'>관리자 페이지</a></li>
                 ";
             } else {
                 echo "
