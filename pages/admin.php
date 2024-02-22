@@ -1,12 +1,21 @@
 <?php
 //관리자 검증
-if(!empty($_SESSION["is_admin"]) && $_SESSION["is_admin"] == 0) {
+if (!isset($_SESSION["user_idx"])) {
     echo "
     <script>
-    alert('관리자만 이용가능한 페이지 입니다.')
-    location.href = '/';
+    alert('로그인 후 이용 가능합니다.')
+    location.href = './login';
     </script>
     ";
+} else {
+    if(!empty($_SESSION["is_admin"]) && $_SESSION["is_admin"] == 0) {
+        echo "
+        <script>
+        alert('관리자만 이용가능한 페이지 입니다.')
+        location.href = '/';
+        </script>
+        ";
+    }
 }
 $sql = "SELECT * FROM posts WHERE is_deleted = 0 ORDER BY write_date DESC"; //ASC = 오름차순, DESC = 내림차순
 $stmt = $pdo->prepare($sql);
