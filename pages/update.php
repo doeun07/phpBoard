@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 // 글 삭제 로직
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    $sql = "UPDATE posts SET is_deleted = 1 WHERE post_idx = :post_idx";
+    $sql = "UPDATE posts SET is_deleted = 0 WHERE post_idx = :post_idx";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':post_idx', $postId);
     $stmt->execute();
