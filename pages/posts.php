@@ -24,6 +24,9 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $divinnertext .= "<p class='textsm'>게시글 ID : " . $post["post_idx"] . "</p>";
             $divinnertext .= "<p class='textsm'>작성일 : " . $post["write_date"] . "</p>";
             $divinnertext .= "<p class='textmd'>" . $post["content"] . "</p>";
+            if($post["user_idx"] == $_SESSION["user_idx"]) {
+                $divinnertext .= "<a href='./update?postId=" . $post["post_idx"] . "'><button type='submit'>수정하기</button></a>";
+            }
             $divinnertext .= "</div>";
             echo $divinnertext;
         }
