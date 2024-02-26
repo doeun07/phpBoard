@@ -29,13 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo $e->getMessage();
     }
 }
-// 글 삭제 로직
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    $sql = "UPDATE posts SET is_deleted = 0 WHERE post_idx = :post_idx";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':post_idx', $postId);
-    $stmt->execute();
-}
 ?>
 <div class="container posting_container">
     <h2>게시글 수정</h2>
@@ -50,30 +43,5 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         </div>
         <button type="submit">게시글 수정</button>
     </form>
-    <form action="" method="GET">
-        <button type="button" onClick='postDelete(this)'>게시글 삭제</button>
-    </form>
+    <button type="button" id="<?= $postId ?>" onClick='postDelete(this)'>게시글 삭제</button>
 </div>
-<script>
-    function postDelete(elem){
-        const post_idx = elem.id;
-        const isConfirm = confirm(`정말로 <?=$postId?>번 게시글을 삭제하시겠습니까?`);
-        if(isConfirm) {
-            $.ajax({
-                url: './admin',
-                type: 'POST',
-                data: {"post_idx": post_idx},
-                success: function() {
-                    alert("정상적으로 게시글이 삭제되었습니다.");
-                    location.href = './posts';
-                },
-                error: function() {
-                    alert("게시글 삭제 중 문제가 발생하였습니다.");
-                }
-            })
-        } else {
-            alert("게시글 삭제가 취소되었습니다.");
-        }
-        return console.log(elem);
-    }
-</script>
